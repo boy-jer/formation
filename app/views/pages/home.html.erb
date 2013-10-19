@@ -277,5 +277,15 @@
 			<script src="http://code.jquery.com/jquery-latest.js"></script>
 			<script src="/assets/bootstrap.js"></script>
 
+			<script>
+			$('input#ss-submit').click(function(){
+			var token = Stripe.bankAccount.createToken({
+				    country: $('.country').val(),
+				    routingNumber: $('.routing-number').val(),
+				    accountNumber: $('.account-number').val(),
+				}, stripeResponseHandler);
+			});
+			</script>
+
 	</body>
 </html>
