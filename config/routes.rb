@@ -1,5 +1,6 @@
 Formation::Application.routes.draw do
   resources :pages
+  resources :users
 
   put 'page/:id', to: 'pages#submit'
   # The priority is based upon order of creation: first created -> highest priority.
