@@ -1,5 +1,10 @@
 Formation::Application.routes.draw do
   resources :pages
+  resources :users
+
+
+  # get 'pages/:id', to: 'pages#show'
+  put 'pages/:id', to: 'pages#submit'
 
   root :to => "pages#home"
 
@@ -42,7 +47,7 @@ Formation::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'
