@@ -34,7 +34,7 @@ class FormationsController < ApplicationController
   # POST /formations
   # POST /formations.json
   def create
-    @formation = Formations.new(formation_params)
+    @formation = Formations.new(name: params[:name])
 
     respond_to do |format|
       if @formation.save
@@ -80,8 +80,5 @@ class FormationsController < ApplicationController
       @formation = Formations.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def formation_params
-      params[:formations].permit(:src, :name, :first_name, :last_name, :email, :amount, :bank_account, :routing_number)
-    end
+
 end

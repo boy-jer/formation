@@ -26,6 +26,8 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'stripe'
 
+gem 'quiet_assets'
+
 
 group :development do
   gem 'sqlite3'

@@ -1,4 +1,5 @@
 class Page < ActiveRecord::Base
+  belongs_to :user
 
   validates_presence_of :src
   validates_presence_of :amount
@@ -46,9 +47,10 @@ class Page < ActiveRecord::Base
 
 end
 
-def iframe_to_src(iframe)
+def self.iframe_to_src(iframe)
+  # form_link = Nokogiri::HTML(iframe)
   form_link = /src="(.+?)"/.match(iframe)[0][5...-1]
-  doc = Nokogiri::HTML(open(form_link))
+  # doc = Nokogiri::HTML(open(form_link))
   # title = doc.css("h1").first.children.first.text
   form_link
 end
