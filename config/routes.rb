@@ -1,6 +1,8 @@
 Formation::Application.routes.draw do
-  resources :pages
+  # resources :pages
 
+  get 'page/:id' to: 'page#show'
+  put 'page/:id' ro: 'page#submit'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -41,7 +43,7 @@ Formation::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'
