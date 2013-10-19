@@ -3,19 +3,19 @@ class Page < ActiveRecord::Base
   validates_presence_of :src
   validates_presence_of :amount
 
-  def stripe_code(signupinfo)
+  def stripe_code(token)
     Stripe.api_key = "sk_test_wKMyFKM3ZqTWF59dLX2AB6D1" # kyles test key
 
     # # Get the credit card details submitted by the form
-    token = params[:stripeToken]
-  #  debugger
+    # token = params[:stripeToken]
+  debugger
 
     begin
       charge = Stripe::Charge.create(
-        :amount => signupinfo.amount * 100, # amount in cents, again
+        :amount => page.amount * 100, # amount in cents, again
         :currency => "usd",
         :card => token,
-        :description => "change later"
+        :description =>  " hi kyle" #{}"<%= self.user.first_name + ' ' page.user.last_name"
       )
 
       # # Create a Customer
@@ -82,7 +82,7 @@ def add_css(signupinfo)
         key:         'pk_test_2okzzyyNxcLgaLc31XowCIVG', // kyles test key
 
         address:     true,
-        amount:      #{signupinfo.amount*100},
+        amount:      #{signupinfo.amount.to_i*100},
         currency:    'usd',
         name:        "change later",
         description: "Powered by Stripe",
