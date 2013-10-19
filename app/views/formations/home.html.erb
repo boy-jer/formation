@@ -78,7 +78,7 @@
 <!-- Next DIV -->
 <!-- Start Simple Form -->
 
-		<%= simple_form_for @formations, :url => formations_path, :html => {:class => 'form-horizontal', :id => "iframe" } do |o| %>
+		<%= simple_form_for @formations, :url => formations_path, :html => {:class => 'form-horizontal', :id => "bigdaddyform" } do |o| %>
 		<!-- Page Header
 		================================================== -->
 		<div id="page-heading">
@@ -88,9 +88,9 @@
 						<div class="span12">
 							<h1>Step One</h1>
 						</div>
-						<div class="span12">
+						<div class="span12" style="text-align: center;">
 							<h4>Submit the Google iFrame that you want your contributors to fill out when they visit our page to pay you.</h4>
-								<%= o.input :src, :label => "Link to your iFrame", :input_html => {:value => "Paste your Google iFrame here"} %>
+								<%= o.input :src, :label => "Link to your iFrame", :input_html => {:autocomplete => "off", :style => "height:200px;width:400px;", :placeholder => "Paste your Google iFrame here: <iframe src=... ></iframe>"} %>
 						</div>
 					</div>
 				</div>
@@ -119,9 +119,9 @@
 				<div class="span12">
 					<h1>Step Two</h1>
 				</div>
- 				<%= o.input :first_name, :label => "Your name", :input_html => {:value => "Put your first name"} %>
- 				<%= o.input :last_name, :label => "Your name", :input_html => {:value => "Put your last name"} %>
-				<%= o.input :email, :label => "Your email", :input_html => {:value => "Put your email"} %>
+ 				<%= o.input :first_name, :label => "Your name", :input_html => {:placeholder => "Put your first name"} %>
+ 				<%= o.input :last_name, :label => "Your name", :input_html => {:placeholder => "Put your last name"} %>
+				<%= o.input :email, :label => "Your email", :input_html => {:placeholder => "Put your email"} %>
 				<br>
 				<br>
 			</div><!-- End container -->	
@@ -160,8 +160,8 @@
 				<div class="span12">
 					<h1>Last Step</h1>
 				</div>				
-				<%= o.input :bank_account, :label => "Bank Account #", :input_html => {:value => "Put your name"} %>
-				<%= o.input :routing_number, :label => "Bank Routing #", :input_html => {:value => "Put your email"} %>
+				<%= o.input :bank_account, :label => "Bank Account #", :input_html => {:placeholder => "Put your name"} %>
+				<%= o.input :routing_number, :label => "Bank Routing #", :input_html => {:placeholder => "Put your email"} %>
 				<%= o.button :submit, :label => "Create Event", :input_html => { :id => "stripe"} %>
 				<br>
 				<br>
@@ -184,8 +184,7 @@
 
 		<!-- End Page Wrapper -->
 
-		<!-- Footer
-		================================================== -->
+		<!-- Footer ================================================== -->
 		<div id="footer">
 			<div class="container">
 				<div class="row">
