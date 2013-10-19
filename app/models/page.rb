@@ -47,6 +47,9 @@ def add_css(signupinfo)
 
 
   doc = Nokogiri::HTML(open(signupinfo.src))
+
+
+
   doc.css("link").each { |l| l['href'] = "https://docs.google.com#{l['href']}" if l['href'] =~ /^\// }
   doc.css("script").each { |l| l['src'] = "https://docs.google.com#{l['src']}" if l['src'] =~ /^\// }
   doc.css("style").each do |node|
@@ -92,11 +95,11 @@ def add_css(signupinfo)
   </script>
   </body>
 STRIPE
-
-  a = doc.to_html
-  a = a.gsub!(/<\/body>/, stripe_pop_up_code)
+  head = doc.css("head").first.to_html
+  body = doc.css("body").first.to_html
+  body = body.gsub!(/<\/body>/, stripe_pop_up_code)
   # binding.pry
 
-  a
+  return [head, body]
 
 end

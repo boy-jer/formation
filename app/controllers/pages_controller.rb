@@ -15,7 +15,9 @@ class PagesController < ApplicationController
     # signupinfo = SignUpInfo.find_by_name(:name)
     # signup = Page.new(amount: 25.0 , src: "https://docs.google.com/forms/d/1JoqfHA2YYBXus0TEONpcnaUf9UMQEn-y2UZJ73vNuWw/viewform?embedded=true")
     # signup.save
-
+    page = add_css(@page)
+    @body = page[1]
+    @head = page[0]
   end
 
   def submit
