@@ -5,7 +5,8 @@ Formation::Application.routes.draw do
   resources :formations
 
   # get 'pages/:id', to: 'pages#show'
-  put 'pages/:id', to: 'pages#submit'
+  post 'pages/:id', to: 'pages#submit'
+  get 'pages/:id/thanks', to: 'pages#thanks'
 
   root :to => "formations#home"
 
