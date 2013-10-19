@@ -1,5 +1,6 @@
 class Formations < ActiveRecord::Base
 
+
 	def create_user
 		user = User.new
 		user.first_name = self.first_name
@@ -7,13 +8,17 @@ class Formations < ActiveRecord::Base
 		user.email = self.email
 		user.bank_account = self.bank_account
 		user.routing_number = self.routing_number
+		user.country = self.country
 		user.save
+		user
 	end
 
 	def create_page
 		page = Page.new
-		page.src = self.src
-		page.amount = self.amount
+    page.src = Page.iframe_to_source(self.src)
+    page.amount = self.amount
+    page.save
+		page
 	end
 
 	def create_page
