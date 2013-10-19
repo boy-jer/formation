@@ -32,7 +32,7 @@
 
 		<!-- Navbar
 		================================================== -->
-		<div class="nav-wrap">
+		<div class="nav-wrap" style="position: fixed;width: 100%;">
 			<div class="container">
 				<div class="navbar">
 					<div class="navbar-inner">
@@ -47,26 +47,15 @@
 							</a>
 							<div class="nav-collapse collapse">
 								<ul class="nav pull-right">
-									<li class="active"><a href="#" class="active">Home</a></li>
+									<li class="active"><a href="#" class="active">iFrame</a></li>
 									<li class="divider-vertical"></li>
-									<li><a href="#">About Us</a></li>
+									<li><a href="#">Personal Info</a></li>
+									<li class="divider-vertical"></li>
+									<li><a href="#">Charge Amount</a></li>
+									<li class="divider-vertical"></li>
+									<li><a href="#">Banking Information</a></li>
 									<li class="divider-vertical"></li>
 									<li><a href="#">Contact Us</a></li>
-									<li class="divider-vertical"></li>
-									<li><a href="#">Blog</a></li>
-									<li class="divider-vertical"></li>
-									<li class="dropdown">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-											Pages
-											<b class="caret"></b>
-										</a>
-										<ul class="dropdown-menu">
-											<li><a href="#">Features</a></li>
-											<li><a href="#">Portfolio</a></li>
-											<li><a href="#">Portfolio Item</a></li>
-											<li><a href="#">Coming Soon</a></li>
-										</ul>
-									</li>
 								</ul>
 							</div>
 						</div>
@@ -114,8 +103,8 @@
 
 		<!-- Home Container
 		================================================== -->
-		<div id="page-heading" style="background-color: #EDECEA;">
-			<div class="page-header">
+		<div id="home">
+			<div class="container">
 				<div class="container">
 					<div class="row home">
 						<div class="span12">
@@ -141,6 +130,7 @@
 		<div id="page-heading">
 			<div class="page-header">
 				<div class="container">
+					<br>
 					<div class="row home">
 						<div class="span12">
 							<h1>Step Three</h1>
@@ -161,17 +151,21 @@
 
 		<div id="home">
 			<div class="container">
-				<div class="span12">
-					<h1>Last Step</h1>
-				</div>
-				<div class="span12" style="text-align: center;">				
-					<%= o.input :bank_account, :label => "Bank Account #", :input_html => {:placeholder => "Put your name"} %>
-					<%= o.input :routing_number, :label => "Bank Routing #", :input_html => {:placeholder => "Put your email"} %>
-					<%= o.button :submit, :label => "Create Event", :input_html => { :id => "stripe"} %>
-				</div>
-				<br>
-				<br>
-			</div><!-- End container -->	
+				<div class="container">
+					<div class="row home">
+						<br>
+						<div class="span12 row home">
+							<h1>Last Step</h1>
+						</div>
+						<div class="span12" style="text-align: center;">				
+							<%= o.input :bank_account, :label => "Bank Account #", :input_html => {:placeholder => "Put your name"} %>
+							<%= o.input :routing_number, :label => "Bank Routing #", :input_html => {:placeholder => "Put your email"} %>
+							<%= o.button :submit, :label => "Create Event", :input_html => { :id => "stripe"} %>
+						</div>
+						<br>
+						<br>
+					</div>
+				</div><!-- End container -->	
 			</div><!-- End container -->
 		</div><!-- End home ID -->
 
@@ -194,20 +188,20 @@
 		<div id="footer">
 			<div class="container">
 				<div class="row">
-					<div class="span4">
-						<h4>Simply Flat</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eu posuere leo. Pellentesque a lobortis erat. Maecenas vel metus vitae urna sollicitudin eleifend a vel elit. </p>
+					<div class="span4" style="text-align: center;">
+						<h4>Formation Mission Statement</h4>
+						<p>Formation is here to help organizers collect information from their attendees. All they need is an iFrame form from Google and an account for us to transfer money to.</p>
 					</div>
-					<div class="span4 testimonial">
+					<div class="span4 testimonial" style="text-align: center;">
 						<h4>Testimonials</h4>
 						<blockquote>
-						<p><i class="icon-quote-left"></i> Consectetur adipiscing elit. Pellentesque eu posuere leo. Pellentesque a lobortis erat. Maecenas vel metus vitae urna sollicitudin eleifend a vel elit. </p>
-						<small>LouEtta</small>
+						<p>"Formation is as light-weight as it gets, it helped me get relevent information from attendees and put together the event quickly."</p>
+						<small>Jorge Olivero</small>
 						</blockquote>
 					</div>
-					<div class="span3 contact pull-right">
+					<div class="span3 contact pull-right" style="text-align: center;">
 						<h4>Contact Us</h4>
-						<ul class="unstyled contact-list">
+						<ul class="unstyled contact-list" style="list-style: none;">
 							<li><i class="icon-home contact-icon"></i>5B Streat, City 50987</li>
 							<li><i class="icon-envelope-alt contact-icon"></i><a href="#">info@example.com</a></li>
 							<li><i class="icon-phone-sign contact-icon"></i>1.541.258.2881</li>
@@ -248,7 +242,7 @@
 			<script src="/assets/bootstrap.js"></script>
 
 			<script type="text/javascript">
-					
+
 			</script>
 	</body>
 </html>
