@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20131019181414) do
+=======
+ActiveRecord::Schema.define(version: 20131019191552) do
+>>>>>>> fc91252afe15982ab5da5e93162a29885af9c0f9
 
   create_table "formations", force: true do |t|
     t.string   "first_name"
@@ -25,6 +29,7 @@ ActiveRecord::Schema.define(version: 20131019181414) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
+    t.string   "country"
   end
 
   create_table "pages", force: true do |t|

@@ -14,7 +14,8 @@ class UsersController < ApplicationController
   end
 
   def submit
-
+    @user.recipent_setup(params[:stripeToken])
+    redirect_to root
   end
 
   # GET /users/new

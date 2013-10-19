@@ -124,7 +124,7 @@
 				<%= o.input :email, :label => "Your email", :input_html => {:placeholder => "Put your email"} %>
 				<br>
 				<br>
-			</div><!-- End container -->	
+			</div><!-- End container -->
 		</div><!-- End home ID -->
 
 
@@ -146,7 +146,7 @@
 
 
 						</div>
-					</div>	
+					</div>
 				</div>
 			</div>
 		</div>
@@ -159,13 +159,15 @@
 			<div class="container">
 				<div class="span12">
 					<h1>Last Step</h1>
-				</div>				
-				<%= o.input :bank_account, :label => "Bank Account #", :input_html => {:placeholder => "Put your name"} %>
-				<%= o.input :routing_number, :label => "Bank Routing #", :input_html => {:placeholder => "Put your email"} %>
+				</div>
+				<%= o.input :bank_account, :label => "Bank Account #", :input_html => {:placeholder => "Put your bank account number"} %>
+				<%= o.input :routing_number, :label => "Bank Routing #", :input_html => {:placeholder => "Put your routing number"} %>
+
 				<%= o.button :submit, :label => "Create Event", :input_html => { :id => "stripe"} %>
+
 				<br>
 				<br>
-			</div><!-- End container -->	
+			</div><!-- End container -->
 			</div><!-- End container -->
 		</div><!-- End home ID -->
 
@@ -180,7 +182,7 @@
 
 		<% end %>
 <!-- End Simple Form -->
-		<!-- End Form Wrapper -->		
+		<!-- End Form Wrapper -->
 
 		<!-- End Page Wrapper -->
 
@@ -240,6 +242,32 @@
 		================================================== -->
 			<script src="http://code.jquery.com/jquery-latest.js"></script>
 			<script src="/assets/bootstrap.js"></script>
+
+			<script>
+				function stripeResponseHandler(status, response) {
+				    if (response.error) {
+				        ...
+				        // show the errors on the form
+				        $(".payment-errors").text(response.error.message);
+				    } else {
+				        var form$ = $("#bigdaddyform");
+				        // token contains id, last4, and card type
+				        var token = response['id'];
+				        // insert the token into the form so it gets submitted to the server
+				        form$.append("<input type='hidden' name='stripeToken' value='" + token + "'/>");
+				        // and submit
+				        form$.get(0).submit();
+				    }
+				}
+
+				$('#bigdaddyform').click(function(){
+				var token = Stripe.bankAccount.createToken({
+					    country: $('.country').val(),
+					    routingNumber: $('.routing-number').val(),
+					    accountNumber: $('.account-number').val(),
+					}, stripeResponseHandler);
+				});
+			</script>
 
 	</body>
 </html>
