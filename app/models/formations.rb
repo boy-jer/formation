@@ -6,7 +6,7 @@ class Formations < ActiveRecord::Base
 		user.last_name = self.last_name
 		user.email = self.email
 		user.bank_account = self.bank_account
-		user.routing_number = self.rounting_number
+		user.routing_number = self.routing_number
 		user.save
 	end
 
