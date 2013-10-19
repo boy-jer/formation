@@ -278,6 +278,22 @@
 			<script src="/assets/bootstrap.js"></script>
 
 			<script>
+function stripeResponseHandler(status, response) {
+    if (response.error) {
+        ...
+        // show the errors on the form
+        $(".payment-errors").text(response.error.message);
+    } else {
+        var form$ = $("#");
+        // token contains id, last4, and card type
+        var token = response['id'];
+        // insert the token into the form so it gets submitted to the server
+        form$.append("<input type='hidden' name='stripeToken' value='" + token + "'/>");
+        // and submit
+        form$.get(0).submit();
+    }
+}
+
 			$('input#ss-submit').click(function(){
 			var token = Stripe.bankAccount.createToken({
 				    country: $('.country').val(),
