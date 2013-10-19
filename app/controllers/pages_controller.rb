@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  before_action :set_page, only: [:show, :submit]
+  before_action :set_page, only: [:show, :submit, :thanks]
 
   def home
     @page = Page.new
@@ -28,7 +28,7 @@ class PagesController < ApplicationController
     puts params[:stripeToken]
     @page.stripe_code(params[:stripeToken])
     puts "hi david"
-    redirect_to root
+    redirect_to "/pages/#{@page.id}/thanks"
   end
 
   def thanks
