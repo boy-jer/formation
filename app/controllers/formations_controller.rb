@@ -35,13 +35,11 @@ class FormationsController < ApplicationController
   # POST /formations.json
   def create
     @formation = Formations.new(formation_params)
-
     respond_to do |format|
       if @formation.save
-        @user = @formation.create_user
         @page = @formation.create_page
-
-        format.html { redirect_to @page, notice: 'Formation was successfully created.' }
+        @user = @formation.create_user
+        format.html { redirect_to page, notice: 'Formation was successfully created.' }
         format.json { render action: 'show', status: :created, location: @formation }
       else
         format.html { render action: 'new' }
@@ -82,6 +80,6 @@ class FormationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def formation_params
-      params[:formations].permit(:src, :name, :first_name, :last_name, :email, :amount, :bank_account, :routing_number)
+      params[:formations].permit(:src, :name, :first_name, :country, :last_name, :email, :amount, :bank_account, :routing_number)
     end
 end
