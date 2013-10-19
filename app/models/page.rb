@@ -18,6 +18,18 @@ class Page < ActiveRecord::Base
         :description =>  " hi kyle" #{}"<%= self.user.first_name + ' ' page.user.last_name"
       )
 
+      if charge
+        # Stripe.api_key = "sk_test_wKMyFKM3ZqTWF59dLX2AB6D1"
+
+        # Create a transfer to the specified recipient
+        transfer = Stripe::Transfer.create(
+          :amount => self.amount.to_i * 100, # amount in cents
+          :currency => "usd",
+          :recipient => recipient_id,
+          :statement_descriptor => "#{charge.name} signed up!"
+        )
+      end
+
       # # Create a Customer
       # customer = Stripe::Customer.create(
       #   :card => token,
