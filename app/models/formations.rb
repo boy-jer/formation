@@ -1,5 +1,4 @@
 class Formations < ActiveRecord::Base
-require 'page'
 
 	def create_user
 		user = User.new
@@ -15,11 +14,9 @@ require 'page'
 
 	def create_page
 		page = Page.new
-
-    page.src = self.src
-    page.amount = self.amount
-
-    page.save
+		page.src = Page.iframe_to_src(self.src)
+		page.amount = self.amount
+		page.save
 		page
 	end
 

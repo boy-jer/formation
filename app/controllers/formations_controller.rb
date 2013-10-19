@@ -43,7 +43,7 @@ class FormationsController < ApplicationController
       if @formation.save
         @page = @formation.create_page
         @user = @formation.create_user
-        format.html { redirect_to page, notice: 'Formation was successfully created.' }
+        format.html { redirect_to @page, notice: 'Formation was successfully created.' }
         format.json { render action: 'show', status: :created, location: @formation }
       else
         format.html { render action: 'new' }

@@ -150,7 +150,7 @@
  								<%= o.input :amount, :label => "Charge this amount." %>
 								<br>
 						</div>
-					</div>	
+					</div>
 				</div>
 			</div>
 		</div>
@@ -164,14 +164,14 @@
 				<div class="span12">
 					<h1>Last Step</h1>
 				</div>
-				<div class="span12" style="text-align: center;">				
+				<div class="span12" style="text-align: center;">
 					<%= o.input :bank_account, :label => "Bank Account #", :input_html => {:placeholder => "Put your name"} %>
 					<%= o.input :routing_number, :label => "Bank Routing #", :input_html => {:placeholder => "Put your email"} %>
 					<%= o.button :submit, :label => "Create Event", :input_html => { :id => "stripe"} %>
 				</div>
 				<br>
 				<br>
-			</div><!-- End container -->	
+			</div><!-- End container -->
 			</div><!-- End container -->
 		</div><!-- End home ID -->
 
@@ -186,7 +186,7 @@
 
 		<% end %>
 <!-- End Simple Form -->
-		<!-- End Form Wrapper -->		
+		<!-- End Form Wrapper -->
 
 		<!-- End Page Wrapper -->
 
@@ -246,9 +246,34 @@
 		================================================== -->
 			<script src="http://code.jquery.com/jquery-latest.js"></script>
 			<script src="/assets/bootstrap.js"></script>
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 
 			<script type="text/javascript">
-					
+Stripe.setPublishableKey('pk_test_2okzzyyNxcLgaLc31XowCIVG');
+function stripeResponseHandler(status, response) {
+    if (response.error) {
+        // show the errors on the form
+        $(".payment-errors").text(response.error.message);
+    } else {
+        var form$ = $("#bigdaddyform");
+        // token contains id, last4, and card type
+        var token = response['id'];
+        // insert the token into the form so it gets submitted to the
+        form$.append("<input type='hidden' name='stripeToken' value='" + token + "'/>");
+        // and submit
+        form$.get(0).submit();
+    }
+}
+
+$("form#bigdaddyform").submit(function(e){
+		var token = Stripe.bankAccount.createToken({
+	            country: "US",
+	            routingNumber: "110000000",
+	            accountNumber: "000123456789",
+	        }, stripeResponseHandler);
+	e.preventDefault();
+	return false;
+});
 			</script>
 	</body>
 </html>
