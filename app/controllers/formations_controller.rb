@@ -34,8 +34,10 @@ class FormationsController < ApplicationController
   # POST /formations
   # POST /formations.json
   def create
+    # binding.pry
 
     @formation = Formations.new(formation_params)
+    # binding.pry
 
     respond_to do |format|
       if @formation.save

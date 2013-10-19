@@ -90,7 +90,7 @@
 						</div>
 						<div class="span12" style="text-align: center;">
 							<h4>Submit the Google iFrame that you want your contributors to fill out when they visit our page to pay you.</h4>
-								<%= o.input :src, :label => "Link to your iFrame", :input_html => {:autocomplete => "off", :style => "height:200px;width:400px;", :placeholder => "Paste your Google iFrame here: <iframe src=... ></iframe>"} %>
+								<%= o.input :src, as: :text, :label => "Link to your iFrame", :input_html => {:autocomplete => "off", :wrap => 'hard', :style => "height:200px;width:400px;", :placeholder => "Paste your Google iFrame here: <iframe src=... ></iframe>"} %>
 						</div>
 					</div>
 				</div>
