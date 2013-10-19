@@ -1,12 +1,13 @@
 Formation::Application.routes.draw do
+  get "formations/home"
   resources :pages
   resources :users
-
+  resources :formations
 
   # get 'pages/:id', to: 'pages#show'
   put 'pages/:id', to: 'pages#submit'
 
-  root :to => "pages#home"
+  root :to => "formations#home"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

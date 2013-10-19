@@ -27,12 +27,9 @@ GEM
       tzinfo (~> 0.3.37)
     arel (4.0.0)
     atomic (1.1.14)
-<<<<<<< HEAD
+    bond (0.4.3)
     bootstrap-sass (2.3.2.0)
       sass (~> 3.2)
-=======
-    bond (0.4.3)
->>>>>>> 1020d4c7f06922237c11b2c6a46954c7e9f5acb1
     builder (3.1.4)
     coderay (1.0.9)
     coffee-rails (4.0.1)
@@ -115,17 +112,14 @@ GEM
     sdoc (0.3.20)
       json (>= 1.1.3)
       rdoc (~> 3.10)
-<<<<<<< HEAD
     simple_form (3.0.0)
       actionpack (>= 4.0.0, < 4.1)
       activemodel (>= 4.0.0, < 4.1)
-=======
     sinatra (1.4.3)
       rack (~> 1.4)
       rack-protection (~> 1.4)
       tilt (~> 1.3, >= 1.3.4)
     slop (3.4.6)
->>>>>>> 1020d4c7f06922237c11b2c6a46954c7e9f5acb1
     sprockets (2.10.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
