@@ -2,7 +2,10 @@ Formation::Application.routes.draw do
   resources :pages
   resources :users
 
-  put 'page/:id', to: 'pages#submit'
+
+  # get 'pages/:id', to: 'pages#show'
+  put 'pages/:id', to: 'pages#submit'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

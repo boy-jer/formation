@@ -13,8 +13,9 @@ class PagesController < ApplicationController
   # GET /pages/1.json
   def show
     # signupinfo = SignUpInfo.find_by_name(:name)
+    # signup = Page.new(amount: 25.0 , src: "https://docs.google.com/forms/d/1JoqfHA2YYBXus0TEONpcnaUf9UMQEn-y2UZJ73vNuWw/viewform?embedded=true")
+    # signup.save
 
-    add_css(signupinfo)
   end
 
   def submit
