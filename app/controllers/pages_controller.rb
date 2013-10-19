@@ -1,18 +1,11 @@
 class PagesController < ApplicationController
   before_action :set_page, only: [:show, :submit, :thanks]
 
-  def home
-    @page = Page.new
-  end
 
-  def home_submit
-    User.new(first_name: params[:first_name])
-  end
 
   def thanks
 
   end
-
 
   def show
     # signupinfo = SignUpInfo.find_by_name(:name)

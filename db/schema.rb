@@ -11,6 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
+ActiveRecord::Schema.define(version: 20131019181414) do
+
+  create_table "formations", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "phone"
+    t.string   "bank_account"
+    t.string   "routing_number"
+    t.string   "src"
+    t.float    "amount"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+  end
+
 ActiveRecord::Schema.define(version: 20131019160737) do
 
   create_table "pages", force: true do |t|

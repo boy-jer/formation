@@ -1,0 +1,25 @@
+<h1>Listing formations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @formations.each do |formation| %>
+      <tr>
+        <td><%= link_to 'Show', formation %></td>
+        <td><%= link_to 'Edit', edit_formation_path(formation) %></td>
+        <td><%= link_to 'Destroy', formation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Formation', new_formation_path %>

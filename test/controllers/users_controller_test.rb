@@ -1,6 +1,10 @@
 require 'test_helper'
 
 class UsersControllerTest < ActionController::TestCase
+
+  # test "the truth" do
+  #   assert true
+  # end
   setup do
     @user = users(:one)
   end
@@ -46,4 +50,5 @@ class UsersControllerTest < ActionController::TestCase
 
     assert_redirected_to users_path
   end
+
 end
