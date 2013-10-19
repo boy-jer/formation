@@ -11,11 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
+ActiveRecord::Schema.define(version: 20131019140247) do
+=======
 ActiveRecord::Schema.define(version: 20131019152425) do
+>>>>>>> 1020d4c7f06922237c11b2c6a46954c7e9f5acb1
 
   create_table "pages", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+<<<<<<< HEAD
+=======
     t.string   "src"
     t.float    "amount"
   end
@@ -30,6 +36,7 @@ ActiveRecord::Schema.define(version: 20131019152425) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "country"
+>>>>>>> 1020d4c7f06922237c11b2c6a46954c7e9f5acb1
   end
 
 end
