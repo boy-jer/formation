@@ -1,39 +1,36 @@
 class Page < ActiveRecord::Base
 
   validates_presence_of :src
-  validates_presence_of :email
   validates_presence_of :amount
-  validates_presence_of :phone_number
-  validates_presence_of :title
 
   def stripe_code(signupinfo)
-  Stripe.api_key = "sk_test_wKMyFKM3ZqTWF59dLX2AB6D1" # kyles test key
+    Stripe.api_key = "sk_test_wKMyFKM3ZqTWF59dLX2AB6D1" # kyles test key
 
-  # # Get the credit card details submitted by the form
-  token = params[:stripeToken]
-#  debugger
+    # # Get the credit card details submitted by the form
+    token = params[:stripeToken]
+  #  debugger
 
-  begin
-    charge = Stripe::Charge.create(
-      :amount => signupinfo.amount * 100, # amount in cents, again
-      :currency => "usd",
-      :card => token,
-      :description => "#{signupinfo.title} - #{signupinfo.email}"
-    )
+    begin
+      charge = Stripe::Charge.create(
+        :amount => signupinfo.amount * 100, # amount in cents, again
+        :currency => "usd",
+        :card => token,
+        :description => "change later"
+      )
 
-    # # Create a Customer
-    # customer = Stripe::Customer.create(
-    #   :card => token,
-    #   :description => person.name + " applepicking.herokuapp.com",
-    #   :email => person.email
-    # )
+      # # Create a Customer
+      # customer = Stripe::Customer.create(
+      #   :card => token,
+      #   :description => person.name + " applepicking.herokuapp.com",
+      #   :email => person.email
+      # )
 
-    # person.stripe_customer_id = customer.id
+      # person.stripe_customer_id = customer.id
 
-    rescue Stripe::CardError => e
-      # The card has been declined
-      puts "Error: #{e.inspect}"
-  end
+      rescue Stripe::CardError => e
+        # The card has been declined
+        puts "Error: #{e.inspect}"
+    end
 
 end
 
@@ -84,7 +81,7 @@ def add_css(signupinfo)
         address:     true,
         amount:      #{signupinfo.amount*100},
         currency:    'usd',
-        name:        "#{signupinfo.title}",
+        name:        "change later",
         description: "Powered by Stripe",
         panelLabel:  'Checkout',
         token:       token
