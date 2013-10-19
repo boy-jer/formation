@@ -1,18 +1,11 @@
 class PagesController < ApplicationController
-  before_action :set_page, only: [:show, :submit]
+  before_action :set_page, only: [:show, :submit, :thanks]
 
-  def home
-    @page = Page.new
-  end
 
-  def home_submit
-    User.new(first_name: params[:first_name])
-  end
 
   def thanks
 
   end
-
 
   def show
     # signupinfo = SignUpInfo.find_by_name(:name)
@@ -28,7 +21,7 @@ class PagesController < ApplicationController
     puts params[:stripeToken]
     @page.stripe_code(params[:stripeToken])
     puts "hi david"
-    redirect_to root
+    redirect_to "/pages/#{@page.id}/thanks"
   end
 
   def thanks
