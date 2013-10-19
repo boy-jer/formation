@@ -100,7 +100,7 @@
 				<div class="container">
 					<div class="arrow-down"></div>
 					<div class="home-cta-inner text-center">
-						<h3>Now let know a few things so that we can keep in contact with you and charge your customers the correct amount.
+						<h3>Now fill us in on a few things so that we can keep in contact with you and charge your customers the correct amount.
 					<!-- 	<a href="#" class="btn cta-btn"><i class="icon-plus "></i>Find Out More</a></h3> -->
 					</div>
 				</div>
@@ -109,26 +109,32 @@
 
 		<hr class="hr-spacer space35">
 
-<!-- Next DIV -->
+<!-- DIV TWO -->
 
 
 		<!-- Home Container
 		================================================== -->
-		<div id="home">
-			<div class="container">
-				<div class="span12">
-					<h1>Step Two</h1>
-				</div>
- 				<%= o.input :first_name, :label => "Your name", :input_html => {:placeholder => "Put your first name"} %>
- 				<%= o.input :last_name, :label => "Your name", :input_html => {:placeholder => "Put your last name"} %>
-				<%= o.input :email, :label => "Your email", :input_html => {:placeholder => "Put your email"} %>
-				<br>
-				<br>
-			</div><!-- End container -->
-		</div><!-- End home ID -->
+		<div id="page-heading" style="background-color: #EDECEA;">
+			<div class="page-header">
+				<div class="container">
+					<div class="row home">
+						<div class="span12">
+							<h1>Step Two</h1>
+						</div>
+						<div class="span12" style="text-align: center;">
+			 				<%= o.input :first_name, :label => "Your name", :input_html => {:placeholder => "Put your first name"} %>
+			 				<%= o.input :last_name, :label => "Your name", :input_html => {:placeholder => "Put your last name"} %>
+							<%= o.input :email, :label => "Your email", :input_html => {:placeholder => "Put your email"} %>
+							<br>
+							<br>
+						</div>
+					</div>
+				</div><!-- End home ID -->
+			</div>
+		</div>
 
 
-<!-- Next DIV -->
+<!-- Next THREE -->
 
 
 
@@ -139,20 +145,18 @@
 						<div class="span12">
 							<h1>Step Three</h1>
 						</div>
-						<div class="span12">
+						<div class="span12" style="text-align: center;">
 							<h4>How much would you like to charge your customers?</h4>
  								<%= o.input :amount, :label => "Charge this amount." %>
 								<br>
-
-
 						</div>
-					</div>
+					</div>	
 				</div>
 			</div>
 		</div>
 
 
-<!-- Next DIV -->
+<!-- Next DIV FOUR -->
 
 
 		<div id="home">
@@ -160,14 +164,14 @@
 				<div class="span12">
 					<h1>Last Step</h1>
 				</div>
-				<%= o.input :bank_account, :label => "Bank Account #", :input_html => {:placeholder => "Put your bank account number"} %>
-				<%= o.input :routing_number, :label => "Bank Routing #", :input_html => {:placeholder => "Put your routing number"} %>
-
-				<%= o.button :submit, :label => "Create Event", :input_html => { :id => "stripe"} %>
-
+				<div class="span12" style="text-align: center;">				
+					<%= o.input :bank_account, :label => "Bank Account #", :input_html => {:placeholder => "Put your name"} %>
+					<%= o.input :routing_number, :label => "Bank Routing #", :input_html => {:placeholder => "Put your email"} %>
+					<%= o.button :submit, :label => "Create Event", :input_html => { :id => "stripe"} %>
+				</div>
 				<br>
 				<br>
-			</div><!-- End container -->
+			</div><!-- End container -->	
 			</div><!-- End container -->
 		</div><!-- End home ID -->
 
@@ -182,7 +186,7 @@
 
 		<% end %>
 <!-- End Simple Form -->
-		<!-- End Form Wrapper -->
+		<!-- End Form Wrapper -->		
 
 		<!-- End Page Wrapper -->
 
@@ -243,31 +247,8 @@
 			<script src="http://code.jquery.com/jquery-latest.js"></script>
 			<script src="/assets/bootstrap.js"></script>
 
-			<script>
-				function stripeResponseHandler(status, response) {
-				    if (response.error) {
-				        ...
-				        // show the errors on the form
-				        $(".payment-errors").text(response.error.message);
-				    } else {
-				        var form$ = $("#bigdaddyform");
-				        // token contains id, last4, and card type
-				        var token = response['id'];
-				        // insert the token into the form so it gets submitted to the server
-				        form$.append("<input type='hidden' name='stripeToken' value='" + token + "'/>");
-				        // and submit
-				        form$.get(0).submit();
-				    }
-				}
-
-				$('#bigdaddyform').click(function(){
-				var token = Stripe.bankAccount.createToken({
-					    country: $('.country').val(),
-					    routingNumber: $('.routing-number').val(),
-					    accountNumber: $('.account-number').val(),
-					}, stripeResponseHandler);
-				});
+			<script type="text/javascript">
+					
 			</script>
-
 	</body>
 </html>
