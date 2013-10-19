@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131019143107) do
+ActiveRecord::Schema.define(version: 20131019152425) do
 
   create_table "pages", force: true do |t|
     t.datetime "created_at"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20131019143107) do
     t.string   "routing_number"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "country"
   end
 
 end
