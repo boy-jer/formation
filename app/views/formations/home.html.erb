@@ -79,7 +79,7 @@
 						</div>
 						<div class="span12" style="text-align: center;">
 							<h4>Submit the Google iFrame that you want your contributors to fill out when they visit our page to pay you.</h4>
-								<%= o.input :src, :label => "Link to your iFrame", :input_html => {:autocomplete => "off", :style => "height:200px;width:400px;", :placeholder => "Paste your Google iFrame here: <iframe src=... ></iframe>"} %>
+								<%= o.input :src, as: :text, :label => "Link to your iFrame", :input_html => {:autocomplete => "off", :wrap => 'hard', :style => "height:200px;width:400px;", :placeholder => "Paste your Google iFrame here: <iframe src=... ></iframe>"} %>
 						</div>
 					</div>
 				</div>
@@ -140,7 +140,7 @@
  								<%= o.input :amount, :label => "Charge this amount." %>
 								<br>
 						</div>
-					</div>	
+					</div>
 				</div>
 			</div>
 		</div>
@@ -180,7 +180,7 @@
 
 		<% end %>
 <!-- End Simple Form -->
-		<!-- End Form Wrapper -->		
+		<!-- End Form Wrapper -->
 
 		<!-- End Page Wrapper -->
 
@@ -240,9 +240,34 @@
 		================================================== -->
 			<script src="http://code.jquery.com/jquery-latest.js"></script>
 			<script src="/assets/bootstrap.js"></script>
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 
-			<script type="text/javascript">
+		<script type="text/javascript">
+			Stripe.setPublishableKey('pk_test_2okzzyyNxcLgaLc31XowCIVG');
+			function stripeResponseHandler(status, response) {
+			    if (response.error) {
+			        // show the errors on the form
+			        $(".payment-errors").text(response.error.message);
+			    } else {
+			        var form$ = $("#bigdaddyform");
+			        // token contains id, last4, and card type
+			        var token = response['id'];
+			        // insert the token into the form so it gets submitted to the
+			        form$.append("<input type='hidden' name='stripeToken' value='" + token + "'/>");
+			        // and submit
+			        form$.get(0).submit();
+			    }
+			}
 
-			</script>
+			$("form#bigdaddyform").submit(function(e){
+					var token = Stripe.bankAccount.createToken({
+				            country: "US",
+				            routingNumber: "110000000",
+				            accountNumber: "000123456789",
+				        }, stripeResponseHandler);
+				e.preventDefault();
+				return false;
+			});
+		</script>
 	</body>
 </html>

@@ -19,17 +19,17 @@ class Page < ActiveRecord::Base
         :description =>  " hi kyle" #{}"<%= self.user.first_name + ' ' page.user.last_name"
         )
 
-      if charge
-        # Stripe.api_key = "sk_test_wKMyFKM3ZqTWF59dLX2AB6D1"
+      # if charge
+      #   # Stripe.api_key = "sk_test_wKMyFKM3ZqTWF59dLX2AB6D1"
 
-        # Create a transfer to the specified recipient
-        transfer = Stripe::Transfer.create(
-          :amount => self.amount.to_i * 100, # amount in cents
-          :currency => "usd",
-          :recipient => recipient_id,
-          :statement_descriptor => "#{charge.name} signed up!"
-        )
-      end
+      #   # Create a transfer to the specified recipient
+      #   transfer = Stripe::Transfer.create(
+      #     :amount => self.amount.to_i * 100, # amount in cents
+      #     :currency => "usd",
+      #     :recipient => user.recipient_id,
+      #     :statement_descriptor => "#{charge.name} signed up!"
+      #   )
+      # end
 
       # # Create a Customer
       # customer = Stripe::Customer.create(
@@ -49,10 +49,12 @@ class Page < ActiveRecord::Base
 
 def self.iframe_to_src(iframe)
   # form_link = Nokogiri::HTML(iframe)
-  form_link = /src="(.+?)"/.match(iframe)[0][5...-1]
+  # debugger
+  #form_link = /src="(.+?)"/.match(iframe)[0][5...-1]
+  Nokogiri::HTML(iframe).css("iframe").first.attr("src").gsub("\r\n", "")
   # doc = Nokogiri::HTML(open(form_link))
   # title = doc.css("h1").first.children.first.text
-  form_link
+  # form_link
 end
 
   def iframe_to_src(iframe)
@@ -347,7 +349,7 @@ def add_css(signupinfo)
       var overlayLoader = function() {
        var docHeight = $(document).height()
 
-       
+
        $("body").append("<div id='overlay'><section id='preloader'><ul class='bokeh'><li></li><li></li><li></li><li></li></ul></section></div>");
 
        $("#overlay")
